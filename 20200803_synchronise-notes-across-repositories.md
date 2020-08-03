@@ -58,6 +58,10 @@ These notes are flagged for sharing with `organisation1/project1` and `organisat
 
 The post-commit hook script automates the process of copying, commiting and pushing the notes to the additional repositories. The notes are copied to a `notes/<github_username>` directory in the destination repositories unless the `github_username` of the destination repository matches the `github_username` of the `all-notes` repository and the repository name contains `notes`. For example these notes are copied directly to the root directory of `rjchallis/bioinformatics-notes`.
 
+## Requirements
+
+The commit hook uses [yq](https://github.com/kislyuk/yq) to parse the YAML metadata in Markdown files. In the example script below, this is assumed to be in a [Conda](https://docs.conda.io/en/latest/) environment named `notes_env`.
+
 ## Usage
 
 To set up the commit hook, create a post-commit hook script in a source notes repository and make it executable. This will run after each commit synchronise any markdown files that were tagged in that commit with destination repositories listed in the metadata `scope`.
