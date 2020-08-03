@@ -1,2 +1,2 @@
 # bioinformatics-notes
-Notes on bioinformatics
+Notes on bioinformatics and useful shell scripts.
