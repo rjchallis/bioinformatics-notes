@@ -92,14 +92,14 @@ for FILE in $FILES; do
       # Copy modified file to project repository, commit and push
       BASENAME=$(basename $FILE)
       if [[ $DIR == *"$GIT_NAME"*"notes"* ]]; then
-        DEST=../$DIR/$BASENAME
+        DEST=$BASENAME
       else
-        DEST=../$DIR/notes/$GIT_NAME/$BASENAME
+        DEST=notes/$GIT_NAME/$BASENAME
       fi
       echo copying $FILE to $DIR
-      rsync $FILE $DEST
+      rsync $FILE ../$DIR/$DEST
       git -C ../$DIR/ pull &&
-      git -C ../$DIR/ add notes/$GIT_NAME/$BASENAME &&
+      git -C ../$DIR/ add $DEST &&
       git -C ../$DIR/ commit -m 'add notes' &&
       git -C ../$DIR/ push
     fi
